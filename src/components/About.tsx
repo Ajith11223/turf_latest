@@ -17,7 +17,6 @@ import JumpText, { JumpBadge } from "@/components/JumpText";
 
 export default function About() {
   const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
 
   const handleSliderMove = (e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -54,32 +53,32 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-20 lg:py-28 bg-[#07150f] overflow-hidden">
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 turf-grid-pattern opacity-15 pointer-events-none" />
+    <section id="about" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
+      {/* Subtle light grid pattern */}
+      <div className="absolute inset-0 turf-grid-pattern-light opacity-50 pointer-events-none" />
 
-      {/* Decorative emerald gradient glows */}
-      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-emerald-600/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-teal-500/10 blur-[120px] rounded-full pointer-events-none" />
+      {/* Decorative emerald gradient glows for light theme */}
+      <div className="absolute top-1/4 -left-32 w-80 h-80 bg-emerald-100/60 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 -right-32 w-80 h-80 bg-teal-100/60 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="mb-3">
-            <JumpBadge icon={Sparkles} text="ABOUT SPORTICON" />
+            <JumpBadge icon={Sparkles} text="ABOUT SPORTICON" className="bg-emerald-50 text-emerald-800 border-emerald-200" />
           </div>
-          <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">
+          <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-700 uppercase mb-2">
             ENGINEERING BETTER SPACES FOR SPORTS
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
             <JumpText
               text="From Empty Spaces to"
-              className="mr-2"
+              className="mr-2 text-slate-950"
             />
             <JumpText
               text="Game-Ready Facilities."
               highlightWords={["Game-Ready", "Facilities."]}
-              highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 drop-shadow"
+              highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />
           </h2>
         </div>
@@ -88,9 +87,9 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Narrative & Values */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="space-y-4 text-neutral-300 leading-relaxed text-sm sm:text-base">
-              <p className="text-white font-medium text-base sm:text-lg">
-                <strong className="text-emerald-400">SPORTICON Infra Private Limited</strong> is a sports infrastructure development company dedicated to creating high-quality sporting facilities that combine performance, durability, safety and innovation.
+            <div className="space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-900 font-semibold text-base sm:text-lg">
+                <strong className="text-emerald-700 font-bold">SPORTICON Infra Private Limited</strong> is a sports infrastructure development company dedicated to creating high-quality sporting facilities that combine performance, durability, safety and innovation.
               </p>
               <p>
                 With over a decade of industry experience and more than 250 completed projects, we work with schools, educational institutions, sports academies, clubs, government organisations, residential communities and private investors across India.
@@ -105,20 +104,20 @@ export default function About() {
               {valueProps.map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="p-4 rounded-xl bg-emerald-950/40 border border-emerald-800/30 hover:border-emerald-600/50 transition-all"
+                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all"
                 >
                   <div className="flex items-center gap-2 mb-1.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <h3 className="text-xs sm:text-sm font-bold text-white">{item.title}</h3>
+                    <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <h3 className="text-xs sm:text-sm font-bold text-slate-900">{item.title}</h3>
                   </div>
-                  <p className="text-[12px] text-neutral-400 leading-snug">{item.desc}</p>
+                  <p className="text-[12px] text-slate-600 leading-snug">{item.desc}</p>
                 </div>
               ))}
             </div>
 
             {/* Client Footprint */}
             <div className="pt-2">
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400/90 mb-3">
+              <p className="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-3">
                 Trusted by Partners Across India:
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -127,10 +126,10 @@ export default function About() {
                   return (
                     <div 
                       key={idx}
-                      className="p-3 rounded-lg bg-[#0b1d16] border border-emerald-900/50 text-center flex flex-col items-center justify-center hover:bg-emerald-950/60 transition-colors"
+                      className="p-3 rounded-lg bg-slate-50 border border-slate-200 text-center flex flex-col items-center justify-center hover:bg-emerald-50 hover:border-emerald-300 transition-colors shadow-2xs"
                     >
-                      <Icon className="w-5 h-5 text-emerald-400 mb-1" />
-                      <div className="text-[11px] font-bold text-white leading-tight">{client.title}</div>
+                      <Icon className="w-5 h-5 text-emerald-600 mb-1" />
+                      <div className="text-[11px] font-bold text-slate-800 leading-tight">{client.title}</div>
                     </div>
                   );
                 })}
@@ -141,19 +140,19 @@ export default function About() {
           {/* Right Column: Interactive Before / After Transformation Visual */}
           <div className="lg:col-span-6 flex flex-col items-center">
             <div className="w-full">
-              <div className="flex items-center justify-between mb-3 text-xs text-neutral-400">
-                <span className="flex items-center gap-1.5 text-emerald-400 font-semibold">
+              <div className="flex items-center justify-between mb-3 text-xs text-slate-600">
+                <span className="flex items-center gap-1.5 text-emerald-700 font-bold">
                   <MoveHorizontal className="w-4 h-4" />
                   <span>Interactive Transformation Slider</span>
                 </span>
-                <span className="text-[11px] bg-emerald-950/90 border border-emerald-700/40 px-2.5 py-0.5 rounded-full text-emerald-300">
+                <span className="text-[11px] bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full text-emerald-800 font-bold">
                   Drag to compare
                 </span>
               </div>
 
               {/* Before/After Interactive Comparison Box */}
               <div 
-                className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/40 select-none cursor-ew-resize touch-none"
+                className="relative h-80 sm:h-96 w-full rounded-2xl overflow-hidden shadow-xl border-2 border-slate-200 select-none cursor-ew-resize touch-none"
                 onMouseMove={handleSliderMove}
                 onTouchMove={handleSliderMove}
               >
@@ -165,7 +164,7 @@ export default function About() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-4 right-4 bg-emerald-600/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  <div className="absolute top-4 right-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                     Game-Ready Facility (After)
                   </div>
                 </div>
@@ -183,30 +182,30 @@ export default function About() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="absolute top-4 left-4 bg-amber-600/90 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                  <div className="absolute top-4 left-4 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                     Empty Space / Raw Land (Before)
                   </div>
                 </div>
 
                 {/* Divider Line & Handle */}
                 <div 
-                  className="absolute inset-y-0 w-1 bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-20"
+                  className="absolute inset-y-0 w-1 bg-white shadow-lg z-20"
                   style={{ left: `${sliderPosition}%` }}
                 >
-                  <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-emerald-950 flex items-center justify-center shadow-2xl border-2 border-emerald-500 font-bold text-xs">
+                  <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white text-emerald-800 flex items-center justify-center shadow-md border-2 border-emerald-600 font-bold text-xs">
                     ↔
                   </div>
                 </div>
               </div>
 
               {/* Caption Underneath */}
-              <div className="mt-3.5 p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/40 flex items-center justify-between text-xs">
-                <span className="text-neutral-400">
+              <div className="mt-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
+                <span className="text-slate-600 font-medium">
                   Real project execution: Ground levelling to international standard turf installation.
                 </span>
                 <a 
                   href="#process" 
-                  className="text-emerald-400 font-semibold hover:text-emerald-300 flex items-center gap-1 shrink-0 ml-2"
+                  className="text-emerald-700 font-bold hover:text-emerald-800 flex items-center gap-1 shrink-0 ml-2"
                 >
                   <span>See Process</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -219,4 +218,3 @@ export default function About() {
     </section>
   );
 }
-

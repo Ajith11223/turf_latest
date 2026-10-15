@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import StatsSection from "@/components/StatsSection";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import BeyondCourts from "@/components/BeyondCourts";
@@ -48,7 +49,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#06110c] text-white selection:bg-emerald-400 selection:text-black">
+    <div className="relative min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-emerald-500 selection:text-white">
       {/* Top Navbar */}
       <Navbar activeSection={activeSection} />
 
@@ -57,7 +58,10 @@ export default function Home() {
         {/* Section 1: Hero Banner */}
         <Hero />
 
-        {/* Section 2: About SPORTICON & Before/After Transformation Slider */}
+        {/* Section 2: Project metrics */}
+        <StatsSection />
+
+        {/* Section 3: About SPORTICON & Before/After Transformation Slider */}
         <About />
 
         {/* Section 3: Core Services 7 Sports */}

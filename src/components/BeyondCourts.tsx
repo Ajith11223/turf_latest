@@ -39,70 +39,70 @@ export default function BeyondCourts() {
   const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
 
   return (
-    <section id="infrastructure" className="relative py-20 lg:py-28 bg-[#071710] overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute inset-0 turf-grid-pattern opacity-10 pointer-events-none" />
-      <div className="absolute top-1/3 -right-20 w-96 h-96 bg-emerald-600/10 blur-[140px] rounded-full pointer-events-none" />
+    <section id="infrastructure" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
+      {/* Light background accents */}
+      <div className="absolute inset-0 turf-grid-pattern-light opacity-40 pointer-events-none" />
+      <div className="absolute top-1/3 -right-20 w-96 h-96 bg-emerald-100/60 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="mb-3">
-            <JumpBadge icon={Sparkles} text="EXTENDED CAPABILITIES" />
+            <JumpBadge icon={Sparkles} text="EXTENDED CAPABILITIES" className="bg-emerald-100/70 text-emerald-800 border-emerald-200" />
           </div>
-          <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">
+          <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-700 uppercase mb-2">
             BEYOND SPORTS COURTS
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight mb-4">
-            <JumpText text="One Partner." className="mr-2" />
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+            <JumpText text="One Partner." className="mr-2 text-slate-950" />
             <JumpText 
               text="Complete Sports Infrastructure."
               highlightWords={["Complete", "Sports", "Infrastructure."]}
-              highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300"
+              highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />
           </h2>
-          <p className="text-sm sm:text-base text-neutral-300">
+          <p className="text-sm sm:text-base text-slate-600">
             We go beyond individual courts to develop complete environments where athletes, students and communities can play, train, compete and stay active.
           </p>
         </div>
 
-        {/* 9 Extended Solutions Grid */}
+        {/* 9 Extended Solutions Grid (Crisp White Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {EXTENDED_INFRASTRUCTURE.map((item, idx) => {
             const Icon = iconMap[item.icon] || Award;
             return (
               <div
                 key={item.id}
-                className="group p-6 rounded-2xl bg-[#0a1e16] border border-emerald-800/40 hover:border-emerald-500/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between"
+                className="group p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-950/80 border border-emerald-700/50 flex items-center justify-center text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-400 group-hover:text-black transition-all">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-950/90 border border-emerald-700/40 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
                       {item.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-emerald-900/50 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-emerald-500/80">
+                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-emerald-700 font-bold">
                     Solution 0{idx + 1}
                   </span>
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 flex items-center gap-1 transition-colors"
+                    className="text-xs font-bold text-emerald-700 group-hover:text-emerald-900 flex items-center gap-1 transition-colors"
                   >
                     <span>Inquire</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -113,27 +113,27 @@ export default function BeyondCourts() {
           })}
         </div>
 
-        {/* Technical Guarantee Strip */}
-        <div className="mt-12 p-6 rounded-2xl bg-emerald-950/50 border border-emerald-700/30 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left">
+        {/* Technical Guarantee Strip (Light Theme) */}
+        <div className="mt-12 p-6 rounded-2xl bg-white border border-emerald-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left shadow-sm">
           <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mx-auto sm:mx-0" />
+            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
             <div>
-              <div className="text-xs sm:text-sm font-bold text-white">Full Turnkey Civil Integration</div>
-              <div className="text-[11px] text-neutral-400">Earth excavation, retaining walls, floodlight electricals</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-900">Full Turnkey Civil Integration</div>
+              <div className="text-[11px] text-slate-500">Earth excavation, retaining walls, floodlight electricals</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mx-auto sm:mx-0" />
+            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
             <div>
-              <div className="text-xs sm:text-sm font-bold text-white">Certified Material Standards</div>
-              <div className="text-[11px] text-neutral-400">FIFA Labosport & FIBA tested synthetic surfaces</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-900">Certified Material Standards</div>
+              <div className="text-[11px] text-slate-500">FIFA Labosport & FIBA tested synthetic surfaces</div>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mx-auto sm:mx-0" />
+            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
             <div>
-              <div className="text-xs sm:text-sm font-bold text-white">24-Hour Maintenance Cell</div>
-              <div className="text-[11px] text-neutral-400">Rapid callout for storm damage, net tears, light faults</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-900">24-Hour Maintenance Cell</div>
+              <div className="text-[11px] text-slate-500">Rapid callout for storm damage, net tears, light faults</div>
             </div>
           </div>
         </div>
@@ -141,4 +141,3 @@ export default function BeyondCourts() {
     </section>
   );
 }
-
