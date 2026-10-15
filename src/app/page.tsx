@@ -15,6 +15,7 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import SectionRevealObserver from "@/components/SectionRevealObserver";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
@@ -49,7 +50,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#f8fafc] text-slate-900 selection:bg-emerald-500 selection:text-white">
+    <div className="site-dark-theme relative min-h-screen selection:bg-emerald-500 selection:text-white">
       {/* Top Navbar */}
       <Navbar activeSection={activeSection} />
 
@@ -94,6 +95,7 @@ export default function Home() {
 
       {/* Continuous Scroll Step Indicator Rail & Floating Widgets */}
       <ScrollProgress />
+      <SectionRevealObserver />
     </div>
   );
 }
