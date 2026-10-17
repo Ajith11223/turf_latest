@@ -178,7 +178,7 @@ export default function Services() {
               transition={{ type: "spring", stiffness: 120, damping: 18, delay: index * 0.06 }}
               whileHover={{ y: -8, scale: 1.015 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]"
+              className="group relative flex w-full shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]"
               aria-roledescription="slide"
               aria-label={`${service.number} of ${filteredServices.length}: ${service.title}`}
             >
