@@ -78,10 +78,10 @@ export default function Contact() {
           <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">
             CONTACT SPORTICON
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="Get a Free Technical Consultation &" className="mr-2" />
-            <JumpText 
-              text="Quotation."
+          <h2 className="max-w-4xl mx-auto text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+            <JumpText
+              text="Get a Free Technical Consultation & Quotation."
+              className="w-full justify-center"
               highlightWords={["Quotation."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300"
             />
