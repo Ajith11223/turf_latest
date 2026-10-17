@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { 
   PROCESS_STEPS, 
   ProcessStep 
@@ -150,7 +151,12 @@ export default function ProcessStepper() {
                 >
                   {/* Step Card Content */}
                   <div className={`w-full md:w-[calc(50%-40px)] pl-14 md:pl-0 ${isEven ? "md:text-left" : "md:text-left"}`}>
-                    <div
+                    <motion.div
+                      initial={{ opacity: 0, rotateY: isEven ? 24 : -24, scale: 0.96 }}
+                      whileInView={{ opacity: 1, rotateY: 0, scale: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: idx * 0.04 }}
+                      style={{ transformPerspective: 1200, transformStyle: "preserve-3d", transformOrigin: isEven ? "left center" : "right center" }}
                       className={`p-6 sm:p-7 rounded-2xl transition-all duration-500 border ${
                         isCurrent
                           ? "bg-emerald-50/70 border-emerald-400 shadow-xl scale-[1.02]"
@@ -194,7 +200,7 @@ export default function ProcessStepper() {
                           </div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Center Node Indicator */}

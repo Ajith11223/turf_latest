@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { 
   EXTENDED_INFRASTRUCTURE 
 } from "@/data/sportsData";
@@ -16,11 +17,20 @@ import {
   Award, 
   Wrench,
   CheckCircle2,
-  ArrowRight
+  ArrowRight,
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
 export default function BeyondCourts() {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const pageSize = 3;
+  const pageCount = Math.ceil(EXTENDED_INFRASTRUCTURE.length / pageSize);
+  const visibleItems = EXTENDED_INFRASTRUCTURE.slice(
+    currentPage * pageSize,
+    currentPage * pageSize + pageSize,
+  );
+
   const iconMap: Record<string, React.ElementType> = {
     LayoutGrid,
     Flame,
@@ -37,6 +47,30 @@ export default function BeyondCourts() {
     "Hi SPORTICON Infra, I am interested in extended sports infrastructure (Lighting, Fencing, Play Areas, Tracks, Renovation)."
   );
   const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
+
+  const showNextPage = useCallback(() => {
+    setDirection(1);
+    setCurrentPage((page) => (page + 1) % pageCount);
+  }, [pageCount]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(showNextPage, 4500);
+    return () => window.clearInterval(intervalId);
+  }, [pageCount, showNextPage]);
+
+  const pageVariants = {
+    enter: (slideDirection: number) => ({
+      opacity: 0,
+      x: slideDirection > 0 ? 64 : -64,
+    }),
+    center: { opacity: 1, x: 0 },
+    exit: (slideDirection: number) => ({
+      opacity: 0,
+      x: slideDirection > 0 ? -64 : 64,
+    }),
+  };
 
   return (
     <section id="infrastructure" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
@@ -66,51 +100,76 @@ export default function BeyondCourts() {
           </p>
         </div>
 
-        {/* 9 Extended Solutions Grid (Crisp White Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {EXTENDED_INFRASTRUCTURE.map((item, idx) => {
-            const Icon = iconMap[item.icon] || Award;
-            return (
-              <div
-                key={item.id}
-                className="group p-6 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
-                      {item.badge}
-                    </span>
-                  </div>
+        {/* Three extended solutions at a time */}
+        <div>
+          <div className="mb-5 flex justify-center">
+            <span className="text-xs font-semibold tracking-wide text-white/75" aria-live="polite">
+              {String(currentPage * pageSize + 1).padStart(2, "0")}–{String(Math.min((currentPage + 1) * pageSize, EXTENDED_INFRASTRUCTURE.length)).padStart(2, "0")} of {String(EXTENDED_INFRASTRUCTURE.length).padStart(2, "0")}
+            </span>
+          </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-emerald-700 font-bold">
-                    Solution 0{idx + 1}
-                  </span>
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold text-emerald-700 group-hover:text-emerald-900 flex items-center gap-1 transition-colors"
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={currentPage}
+              custom={direction}
+              variants={pageVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              {visibleItems.map((item, index) => {
+                const Icon = iconMap[item.icon] || Award;
+                const itemNumber = currentPage * pageSize + index + 1;
+                return (
+                  <motion.article
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.09 }}
+                    className="group flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 hover:shadow-xl"
                   >
-                    <span>Inquire</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                          <Icon className="w-6 h-6" />
+                        </div>
+                        <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                          {item.badge}
+                        </span>
+                      </div>
+
+                      <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-emerald-700 font-bold">
+                        Solution {String(itemNumber).padStart(2, "0")}
+                      </span>
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-emerald-700 group-hover:text-emerald-900 flex items-center gap-1 transition-colors"
+                      >
+                        <span>Inquire</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Technical Guarantee Strip (Light Theme) */}
