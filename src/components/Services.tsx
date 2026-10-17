@@ -276,13 +276,6 @@ export default function Services() {
               We engineer hybrid spaces pairing Football + Box Cricket, or Basketball + Pickleball within a single enclosed perimeter.
             </p>
           </div>
-          <a
-            href="#estimator"
-            className="px-6 py-3 rounded-xl text-xs sm:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors shadow-md shadow-emerald-600/20 shrink-0 flex items-center gap-2 cursor-pointer"
-          >
-            <span>Try Court Size Estimator</span>
-            <ChevronRight className="w-4 h-4" />
-          </a>
         </div>
       </div>
 

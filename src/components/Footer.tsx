@@ -137,11 +137,6 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
-              <li className="pt-2">
-                <a href="#estimator" className="text-emerald-400 font-bold hover:underline">
-                  → Turf Cost Estimator
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -164,10 +159,10 @@ export default function Footer() {
                 <span>info@sporticon.in</span>
               </div>
               <div className="pt-2">
-                <div className="text-[11px] text-slate-500 uppercase font-bold mb-1">Key Footprint:</div>
+                <div className="text-xs text-emerald-300 uppercase font-extrabold tracking-wide mb-1">Key Footprint:</div>
                 <div className="flex flex-wrap gap-1.5">
                   {majorLocations.map((loc, idx) => (
-                    <span key={idx} className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-[10px] text-emerald-800">
+                    <span key={idx} className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-700/70 text-[10px] text-emerald-200">
                       {loc}
                     </span>
                   ))}
