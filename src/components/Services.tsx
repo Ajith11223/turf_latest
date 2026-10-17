@@ -89,7 +89,7 @@ export default function Services() {
   }, [activeModalService, isCarouselPaused, moveCarousel]);
 
   return (
-    <section id="services" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
+    <section id="services" className="relative py-14 sm:py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
       {/* Light background subtle aura */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-emerald-100/50 blur-[140px] rounded-full pointer-events-none" />
 
@@ -110,7 +110,7 @@ export default function Services() {
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
+          <p className="mx-auto max-w-2xl text-sm sm:text-base text-slate-600">
             From a single court to a complete multi-sport facility, SPORTICON delivers integrated sports infrastructure solutions tailored to your requirements.
           </p>
 
@@ -120,7 +120,7 @@ export default function Services() {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
+                className={`min-h-10 px-3 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat.id
                     ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30 scale-105"
                     : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-100"
@@ -133,7 +133,7 @@ export default function Services() {
         </div>
 
         {/* Animated horizontal service cards */}
-        <div className="mb-4 flex justify-end gap-2">
+        <div className="mb-3 flex justify-center gap-2 sm:mb-4 sm:justify-end">
           <button
             type="button"
             onClick={() => moveCarousel(-1)}
@@ -178,12 +178,12 @@ export default function Services() {
               transition={{ type: "spring", stiffness: 120, damping: 18, delay: index * 0.06 }}
               whileHover={{ y: -8, scale: 1.015 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative flex w-full shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]"
+              className="group relative flex w-full basis-full shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] sm:basis-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)] lg:basis-[calc(33.333%_-_1rem)]"
               aria-roledescription="slide"
               aria-label={`${service.number} of ${filteredServices.length}: ${service.title}`}
             >
               {/* Card Image Container with Hover Zoom */}
-              <div className="relative h-52 w-full overflow-hidden bg-slate-100">
+              <div className="relative h-48 w-full overflow-hidden bg-slate-100 sm:h-52">
                 <motion.div
                   className="absolute inset-0"
                   initial={{ scale: 1.12, opacity: 0.65, filter: "blur(8px)" }}
@@ -195,6 +195,7 @@ export default function Services() {
                     src={service.image}
                     alt={service.title}
                     fill
+                    sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 50vw, 33vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </motion.div>
@@ -220,7 +221,7 @@ export default function Services() {
               </div>
 
               {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-4 flex-1 flex flex-col justify-between sm:p-6">
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2.5">
                     {service.title}
@@ -232,8 +233,8 @@ export default function Services() {
                   {/* Bullet Specs */}
                   <div className="space-y-1.5 mb-6">
                     {service.specs.slice(0, 3).map((spec, sIdx) => (
-                      <div key={sIdx} className="flex items-center gap-2 text-[12px] text-slate-600">
-                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <div key={sIdx} className="flex items-start gap-2 text-[12px] text-slate-600">
+                        <Check className="mt-0.5 w-3.5 h-3.5 text-emerald-600 shrink-0" />
                         <span>{spec}</span>
                       </div>
                     ))}
@@ -244,7 +245,7 @@ export default function Services() {
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
                   <button
                     onClick={() => setActiveModalService(service)}
-                    className="text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1 transition-colors cursor-pointer"
+                    className="text-[11px] sm:text-xs font-bold text-emerald-700 hover:text-emerald-900 flex items-center gap-1 transition-colors cursor-pointer"
                   >
                     <span>View Specifications</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -267,7 +268,7 @@ export default function Services() {
         </div>
 
         {/* Brochure Reference Banner (Light Theme) */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="mt-10 p-5 sm:mt-14 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm">
           <div className="space-y-1 text-center md:text-left">
             <h4 className="text-base sm:text-lg font-bold text-slate-900">
               Looking for a custom multi-sport combination court?
