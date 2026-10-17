@@ -83,9 +83,9 @@ export default function WhyUs() {
             BUILT ON EXPERIENCE. DRIVEN BY QUALITY.
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="The Right Partner for Your" className="mr-2 text-slate-950" />
-            <JumpText 
-              text="Sports Facility."
+            <JumpText
+              text="The Right Partner for Your Sports Facility."
+              className="w-full justify-center"
               highlightWords={["Sports", "Facility."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />

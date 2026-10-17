@@ -72,11 +72,8 @@ export default function About() {
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
             <JumpText
-              text="From Empty Spaces to"
-              className="mr-2 text-slate-950"
-            />
-            <JumpText
-              text="Game-Ready Facilities."
+              text="From Empty Spaces to Game-Ready Facilities."
+              className="w-full justify-center"
               highlightWords={["Game-Ready", "Facilities."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />

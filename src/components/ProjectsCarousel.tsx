@@ -82,9 +82,9 @@ export default function ProjectsCarousel() {
             OUR WORK
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="Projects That Bring" className="mr-2 text-slate-950" />
-            <JumpText 
-              text="Sport to Life."
+            <JumpText
+              text="Projects That Bring Sport to Life."
+              className="w-full justify-center"
               highlightWords={["Sport", "Life."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />

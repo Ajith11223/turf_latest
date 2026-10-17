@@ -103,9 +103,9 @@ export default function Services() {
             COMPLETE SPORTS INFRASTRUCTURE
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="One Partner." className="mr-2 text-slate-950" />
-            <JumpText 
-              text="Complete Sports Solutions."
+            <JumpText
+              text="One Partner. Complete Sports Solutions."
+              className="w-full justify-center"
               highlightWords={["Complete", "Sports", "Solutions."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />

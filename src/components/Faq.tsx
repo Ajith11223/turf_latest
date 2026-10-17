@@ -41,9 +41,9 @@ export default function Faq() {
             FREQUENTLY ASKED QUESTIONS
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="Everything You Need to" className="mr-2" />
-            <JumpText 
-              text="Know Before Building."
+            <JumpText
+              text="Everything You Need to Know Before Building."
+              className="w-full justify-center"
               highlightWords={["Know", "Before", "Building."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300"
             />

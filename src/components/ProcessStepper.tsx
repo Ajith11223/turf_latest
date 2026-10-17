@@ -79,9 +79,9 @@ export default function ProcessStepper() {
             FROM CONCEPT TO COMPLETION
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="A Structured Approach to" className="mr-2 text-slate-950" />
-            <JumpText 
-              text="Every Project."
+            <JumpText
+              text="A Structured Approach to Every Project."
+              className="w-full justify-center"
               highlightWords={["Every", "Project."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />

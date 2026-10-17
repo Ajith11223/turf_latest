@@ -88,9 +88,9 @@ export default function BeyondCourts() {
             BEYOND SPORTS COURTS
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            <JumpText text="One Partner." className="mr-2 text-slate-950" />
-            <JumpText 
-              text="Complete Sports Infrastructure."
+            <JumpText
+              text="One Partner. Complete Sports Infrastructure."
+              className="w-full justify-center"
               highlightWords={["Complete", "Sports", "Infrastructure."]}
               highlightClassName="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600"
             />
