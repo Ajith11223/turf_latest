@@ -11,7 +11,7 @@ import {
   Trophy, 
   Sparkles, 
   MapPin, 
-  CheckCircle2, 
+  CheckCircle2,
   Zap,
   Sun
 } from "lucide-react";
@@ -40,10 +40,10 @@ export default function Hero() {
       </div>
 
       {/* Main Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 w-full">
-        <div className="max-w-3xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 w-full">
+        <div className="max-w-2xl">
           {/* Top Pill Badge */}
-          <div className="mb-5">
+          <div className="mb-7">
             <JumpBadge
               icon={Sparkles}
               text="Pan-India Turnkey Sports Infrastructure • FIFA & FIBA Standards"
@@ -52,8 +52,8 @@ export default function Hero() {
           </div>
 
           {/* White heading with a turf and sunset accent */}
-          <div className="mb-6">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+          <div className="mb-8">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
               <JumpText
                 text="Building the Future of"
                 mode="words"
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
 
           {/* Subtitle with warm accent highlights */}
-          <div className="mb-8 max-w-2xl text-sm sm:text-base lg:text-lg text-white font-semibold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+          <div className="mb-10 max-w-xl text-sm sm:text-base lg:text-lg text-white font-semibold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
             <JumpText
               text="We design, build and maintain world-class sports facilities that bring performance, durability and innovation together."
               mode="words"
@@ -91,7 +91,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 20 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-8"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10"
           >
             {/* Btn 1: Get a Free Quote */}
             <motion.a
@@ -118,15 +118,6 @@ export default function Hero() {
               <span className="text-emerald-600 group-hover:translate-x-1 transition-transform">→</span>
             </motion.a>
 
-            {/* Quick Estimator CTA */}
-            <motion.a
-              href="#estimator"
-              whileHover={{ scale: 1.05 }}
-              className="px-4 py-4 rounded-xl text-xs font-bold text-white hover:text-amber-200 flex items-center justify-center gap-2 transition-colors"
-            >
-              <Zap className="w-4 h-4 text-amber-500 animate-bounce" />
-              <span>Turf Cost Calculator</span>
-            </motion.a>
           </motion.div>
 
           {/* Assurance Highlights */}
@@ -134,7 +125,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85, duration: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs text-white font-medium pt-3 border-t border-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 text-xs text-white font-medium pt-5 border-t border-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
           >
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
