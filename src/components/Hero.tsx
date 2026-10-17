@@ -88,40 +88,6 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Action Buttons */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 20 }}
-            className="flex flex-col items-center gap-3 mb-6 sm:flex-row sm:items-center sm:gap-4 sm:mb-10"
-          >
-            {/* Btn 1: Get a Free Quote */}
-            <motion.a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="relative w-full max-w-xs px-7 py-3 sm:py-4 rounded-xl text-sm font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-600/30 flex items-center justify-center gap-2.5 group overflow-hidden sm:w-auto"
-            >
-              <MessageSquare className="w-5 h-5 text-white shrink-0" />
-              <span>Get a Free Quote</span>
-              <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
-            </motion.a>
-
-            {/* Btn 2: Explore our work */}
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.04, y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              className="hidden w-full max-w-xs px-7 py-4 rounded-xl text-sm font-bold text-slate-800 bg-white/95 hover:bg-slate-50 border-2 border-slate-300 hover:border-emerald-500 transition-all duration-300 sm:flex sm:w-auto items-center justify-center gap-2 group shadow-sm"
-            >
-              <span>Explore Our Work</span>
-              <span className="text-emerald-600 group-hover:translate-x-1 transition-transform">→</span>
-            </motion.a>
-
-          </motion.div>
-
           {/* Assurance Highlights */}
           <motion.div 
             initial={{ opacity: 0 }}
@@ -141,6 +107,37 @@ export default function Hero() {
               <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
               <span>300+ Lux Stadium Lights</span>
             </div>
+          </motion.div>
+
+          {/* Actions stay at the bottom of the hero content on every screen size. */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 20 }}
+            className="mt-6 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4"
+          >
+            <motion.a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="relative w-full max-w-xs px-7 py-3 sm:py-4 rounded-xl text-sm font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-600/30 flex items-center justify-center gap-2.5 group overflow-hidden sm:w-auto"
+            >
+              <MessageSquare className="w-5 h-5 text-white shrink-0" />
+              <span>Get a Free Quote</span>
+              <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+            </motion.a>
+
+            <motion.a
+              href="#projects"
+              whileHover={{ scale: 1.04, y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full max-w-xs px-7 py-3 sm:py-4 rounded-xl text-sm font-bold text-slate-800 bg-white/95 hover:bg-slate-50 border-2 border-slate-300 hover:border-emerald-500 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm sm:w-auto"
+            >
+              <span>Explore Our Work</span>
+              <span className="text-emerald-600 group-hover:translate-x-1 transition-transform">→</span>
+            </motion.a>
           </motion.div>
         </div>
       </div>
