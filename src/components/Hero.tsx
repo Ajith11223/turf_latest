@@ -41,9 +41,9 @@ export default function Hero() {
 
       {/* Main Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 w-full">
-        <div className="max-w-2xl">
+        <div className="mx-auto max-w-2xl sm:mx-0">
           {/* Top Pill Badge */}
-          <div className="mb-7">
+          <div className="mb-7 flex justify-center sm:justify-start">
             <JumpBadge
               icon={Sparkles}
               text="Pan-India Turnkey Sports Infrastructure • FIFA & FIBA Standards"
@@ -53,7 +53,7 @@ export default function Hero() {
 
           {/* White heading with a turf and sunset accent */}
           <div className="mb-8">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
+            <h1 className="text-center text-3xl sm:text-left sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.08] drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
               <JumpText
                 text="Building the Future of"
                 mode="words"
@@ -75,7 +75,7 @@ export default function Hero() {
           </div>
 
           {/* Subtitle with warm accent highlights */}
-          <div className="mb-10 max-w-xl text-sm sm:text-base lg:text-lg text-white font-semibold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+          <div className="mb-10 mx-auto max-w-xl text-center text-sm sm:mx-0 sm:text-left sm:text-base lg:text-lg text-white font-semibold leading-relaxed drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
             <JumpText
               text="We design, build and maintain world-class sports facilities that bring performance, durability and innovation together."
               mode="words"
@@ -91,7 +91,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 20 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10"
+            className="flex flex-col items-center gap-4 mb-10 sm:flex-row sm:items-center"
           >
             {/* Btn 1: Get a Free Quote */}
             <motion.a
@@ -100,7 +100,7 @@ export default function Hero() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="relative px-7 py-4 rounded-xl text-sm font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-600/30 flex items-center justify-center gap-2.5 group overflow-hidden"
+              className="relative w-full max-w-xs px-7 py-4 rounded-xl text-sm font-extrabold text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300 shadow-xl shadow-emerald-600/30 flex items-center justify-center gap-2.5 group overflow-hidden sm:w-auto"
             >
               <MessageSquare className="w-5 h-5 text-white shrink-0" />
               <span>Get a Free Quote</span>
@@ -112,7 +112,7 @@ export default function Hero() {
               href="#projects"
               whileHover={{ scale: 1.04, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="px-7 py-4 rounded-xl text-sm font-bold text-slate-800 bg-white/95 hover:bg-slate-50 border-2 border-slate-300 hover:border-emerald-500 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm"
+              className="w-full max-w-xs px-7 py-4 rounded-xl text-sm font-bold text-slate-800 bg-white/95 hover:bg-slate-50 border-2 border-slate-300 hover:border-emerald-500 transition-all duration-300 flex items-center justify-center gap-2 group shadow-sm sm:w-auto"
             >
               <span>Explore Our Work</span>
               <span className="text-emerald-600 group-hover:translate-x-1 transition-transform">→</span>
@@ -125,17 +125,17 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.85, duration: 0.6 }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 text-xs text-white font-medium pt-5 border-t border-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-4 text-center text-xs text-white font-medium pt-5 border-t border-white/60 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]"
           >
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 sm:justify-start">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>French Drainage Tech</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 sm:justify-start">
               <CheckCircle2 className="w-4 h-4 text-amber-600 shrink-0" />
               <span>UV Monofilament Turf</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="col-span-2 flex items-center justify-center gap-2 sm:col-span-1 sm:justify-start">
               <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0" />
               <span>300+ Lux Stadium Lights</span>
             </div>

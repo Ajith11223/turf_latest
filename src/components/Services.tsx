@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { 
   CORE_SERVICES, 
   ServiceItem 
@@ -14,13 +15,16 @@ import {
   Target, 
   X, 
   MessageSquare, 
-  ChevronRight 
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
   const categories = [
     { id: "all", label: "All Sports (7)" },
@@ -43,6 +47,46 @@ export default function Services() {
     );
     return `https://wa.me/919400088990?text=${text}`;
   };
+
+  const moveCarousel = useCallback((direction: 1 | -1) => {
+    const carousel = carouselRef.current;
+    const firstCard = carousel?.firstElementChild as HTMLElement | null;
+    if (!carousel || !firstCard) return;
+
+    const styles = window.getComputedStyle(carousel);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+    const distance = firstCard.getBoundingClientRect().width + gap;
+    const maxScroll = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+    if (maxScroll <= 4) return;
+
+    if (direction > 0 && carousel.scrollLeft >= maxScroll - 4) {
+      carousel.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    if (direction < 0 && carousel.scrollLeft <= 4) {
+      carousel.scrollTo({ left: maxScroll, behavior: "smooth" });
+      return;
+    }
+
+    const nextPosition = Math.min(maxScroll, Math.max(0, carousel.scrollLeft + distance * direction));
+    carousel.scrollTo({ left: nextPosition, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    carousel.scrollTo({ left: 0, behavior: "smooth" });
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    if (isCarouselPaused || activeModalService) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const intervalId = window.setInterval(() => moveCarousel(1), 3000);
+    return () => window.clearInterval(intervalId);
+  }, [activeModalService, isCarouselPaused, moveCarousel]);
 
   return (
     <section id="services" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
@@ -88,22 +132,81 @@ export default function Services() {
           </div>
         </div>
 
-        {/* Animated Cards Grid (Crisp White Cards on Light Background) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {filteredServices.map((service) => (
-            <div
+        {/* Animated horizontal service cards */}
+        <div className="mb-4 flex justify-end gap-2">
+          <button
+            type="button"
+            onClick={() => moveCarousel(-1)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white transition hover:border-emerald-300 hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            aria-label="Previous services"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => moveCarousel(1)}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white transition hover:border-emerald-300 hover:bg-emerald-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-300"
+            aria-label="Next services"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+
+        <div
+          ref={carouselRef}
+          className="-mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto px-4 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
+          role="region"
+          aria-label="Core services carousel"
+          aria-roledescription="carousel"
+          onMouseEnter={() => setIsCarouselPaused(true)}
+          onMouseLeave={() => setIsCarouselPaused(false)}
+          onFocusCapture={() => setIsCarouselPaused(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+              setIsCarouselPaused(false);
+            }
+          }}
+          onTouchStart={() => setIsCarouselPaused(true)}
+          onTouchEnd={() => setIsCarouselPaused(false)}
+        >
+          {filteredServices.map((service, index) => (
+            <motion.article
               key={service.id}
-              className="group relative rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl flex flex-col overflow-hidden"
+              initial={{ opacity: 0, x: 44, scale: 0.96 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ type: "spring", stiffness: 120, damping: 18, delay: index * 0.06 }}
+              whileHover={{ y: -8, scale: 1.015 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative flex w-[88%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)]"
+              aria-roledescription="slide"
+              aria-label={`${service.number} of ${filteredServices.length}: ${service.title}`}
             >
               {/* Card Image Container with Hover Zoom */}
               <div className="relative h-52 w-full overflow-hidden bg-slate-100">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                <motion.div
+                  className="absolute inset-0"
+                  initial={{ scale: 1.12, opacity: 0.65, filter: "blur(8px)" }}
+                  whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </motion.div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                <motion.div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                  initial={{ x: "-160%" }}
+                  whileInView={{ x: "520%" }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 1.2, delay: 0.2, ease: "easeInOut" }}
+                />
 
                 {/* Number Watermark Badge */}
                 <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md border border-slate-200 text-slate-800 font-mono text-xs font-bold px-2.5 py-1 rounded-md shadow-xs">
@@ -159,7 +262,7 @@ export default function Services() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.article>
           ))}
         </div>
 
