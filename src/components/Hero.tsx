@@ -114,7 +114,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, type: "spring", stiffness: 300, damping: 20 }}
-            className="mt-6 flex flex-col items-center gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4"
+            className="mt-10 flex flex-col items-center gap-3 sm:mt-12 sm:flex-row sm:items-center sm:gap-4"
           >
             <motion.a
               href={whatsappUrl}
