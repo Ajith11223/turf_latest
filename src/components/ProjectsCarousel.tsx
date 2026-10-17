@@ -125,6 +125,8 @@ export default function ProjectsCarousel() {
                   alt={currentProject.title}
                   fill
                   priority
+                  quality={95}
+                  sizes="(max-width: 1024px) 100vw, 58vw"
                   className="object-cover transition-all duration-700 brightness-100 hover:scale-105"
                 />
 
@@ -287,6 +289,8 @@ export default function ProjectsCarousel() {
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 fill
+                quality={95}
+                sizes="(max-width: 768px) calc(100vw - 32px), 672px"
                 className="object-cover"
               />
             </div>
