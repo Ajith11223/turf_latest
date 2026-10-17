@@ -17,7 +17,6 @@ const SECTIONS: SectionStep[] = [
   { id: "process", label: "Process", shortNumber: "05" },
   { id: "why-us", label: "Why SPORTICON", shortNumber: "06" },
   { id: "projects", label: "Projects", shortNumber: "07" },
-  { id: "estimator", label: "Cost Estimator", shortNumber: "08" },
   { id: "faqs", label: "FAQs", shortNumber: "09" },
   { id: "contact", label: "Contact Quote", shortNumber: "10" },
 ];

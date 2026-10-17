@@ -10,7 +10,6 @@ import BeyondCourts from "@/components/BeyondCourts";
 import ProcessStepper from "@/components/ProcessStepper";
 import WhyUs from "@/components/WhyUs";
 import ProjectsCarousel from "@/components/ProjectsCarousel";
-import TurfEstimator from "@/components/TurfEstimator";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -30,7 +29,6 @@ export default function Home() {
         "process",
         "why-us",
         "projects",
-        "estimator",
         "faqs",
         "contact",
       ];
@@ -79,9 +77,6 @@ export default function Home() {
 
         {/* Section 7: Major Projects Animated Carousel */}
         <ProjectsCarousel />
-
-        {/* Interactive Turf Sizing & Cost Estimator */}
-        <TurfEstimator />
 
         {/* Section 8: Frequently Asked Questions */}
         <Faq />

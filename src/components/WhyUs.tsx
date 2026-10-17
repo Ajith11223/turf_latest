@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { 
   WHY_US_PILLARS 
 } from "@/data/sportsData";
@@ -22,6 +23,7 @@ import JumpText, { JumpBadge } from "@/components/JumpText";
 
 export default function WhyUs() {
   const [activeTab, setActiveTab] = useState<"pillars" | "comparison">("pillars");
+  const reduceMotion = useReducedMotion();
 
   const iconMap: Record<string, React.ElementType> = {
     experience: Clock,
@@ -119,13 +121,19 @@ export default function WhyUs() {
 
         {/* Tab 1: 6 Core Pillars Grid (Crisp White Cards) */}
         {activeTab === "pillars" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-fadeIn">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-fadeIn [perspective:1200px]">
             {WHY_US_PILLARS.map((pillar) => {
               const Icon = iconMap[pillar.id] || ShieldCheck;
               return (
-                <div
+                <motion.div
                   key={pillar.id}
-                  className="p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl flex flex-col justify-between group"
+                  className="p-7 rounded-2xl bg-white border border-slate-200/90 hover:border-emerald-500 flex flex-col justify-between group [transform-style:preserve-3d]"
+                  initial={reduceMotion ? false : { opacity: 0, y: 28, rotateX: -8 }}
+                  whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, rotateX: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  whileHover={reduceMotion ? undefined : { y: -8, rotateX: 4, rotateY: -3, scale: 1.02 }}
+                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: "center bottom" }}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
@@ -154,7 +162,7 @@ export default function WhyUs() {
                     <CheckCircle2 className="w-4 h-4" />
                     <span>Verified SPORTICON Standard</span>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
