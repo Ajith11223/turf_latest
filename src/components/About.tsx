@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { 
-  CheckCircle, 
   ShieldCheck, 
   Sparkles, 
   Building2, 
@@ -31,25 +30,6 @@ export default function About() {
     { title: "Sports Academies & Clubs", desc: "Professional Football & Cricket Training", icon: Award },
     { title: "Government Bodies", desc: "Police Grounds, Municipal Stadiums", icon: Building2 },
     { title: "Private Investors & Hubs", desc: "Commercial Turfs & Rooftop Arenas", icon: Users },
-  ];
-
-  const valueProps = [
-    {
-      title: "Engineered Drainage",
-      desc: "Sub-surface herringbone drainage system preventing waterlogging even during peak monsoon downpours."
-    },
-    {
-      title: "Player Safety & Ergonomics",
-      desc: "Calibrated shock absorption and non-abrasive turf filaments reducing ACL, ankle, and skin burn injuries."
-    },
-    {
-      title: "Commercial Longevity",
-      desc: "UV-stabilized 12,000 Dtex fibers maintaining vertical spine elasticity under 14+ hours of continuous daily play."
-    },
-    {
-      title: "Turnkey Accountability",
-      desc: "Complete civil foundation, lighting lux calculations, fence fabrication, and equipment under one roof."
-    }
   ];
 
   return (
@@ -94,22 +74,6 @@ export default function About() {
               <p>
                 From the initial concept and planning to construction, installation and maintenance, we bring together technical expertise and project coordination to transform spaces into purpose-built sporting environments.
               </p>
-            </div>
-
-            {/* Value Highlights Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              {valueProps.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 hover:shadow-md transition-all"
-                >
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                    <h3 className="text-xs sm:text-sm font-bold text-slate-900">{item.title}</h3>
-                  </div>
-                  <p className="text-[12px] text-slate-600 leading-snug">{item.desc}</p>
-                </div>
-              ))}
             </div>
 
             {/* Client Footprint */}

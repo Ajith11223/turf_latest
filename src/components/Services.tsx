@@ -21,25 +21,9 @@ import {
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
 export default function Services() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [activeModalService, setActiveModalService] = useState<ServiceItem | null>(null);
   const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  const categories = [
-    { id: "all", label: "All Sports (7)" },
-    { id: "turf", label: "Turf Sports" },
-    { id: "court", label: "Courts & Hard Surface" },
-    { id: "racquet", label: "Racquet & Paddle" },
-  ];
-
-  const filteredServices = CORE_SERVICES.filter((service) => {
-    if (selectedCategory === "all") return true;
-    if (selectedCategory === "turf") return service.id === "football" || service.id === "cricket";
-    if (selectedCategory === "court") return service.id === "basketball" || service.id === "volleyball" || service.id === "tennis";
-    if (selectedCategory === "racquet") return service.id === "pickleball" || service.id === "badminton" || service.id === "tennis";
-    return true;
-  });
 
   const getWhatsappQuoteUrl = (serviceTitle: string) => {
     const text = encodeURIComponent(
@@ -72,13 +56,6 @@ export default function Services() {
     const nextPosition = Math.min(maxScroll, Math.max(0, carousel.scrollLeft + distance * direction));
     carousel.scrollTo({ left: nextPosition, behavior: "smooth" });
   }, []);
-
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
-
-    carousel.scrollTo({ left: 0, behavior: "smooth" });
-  }, [selectedCategory]);
 
   useEffect(() => {
     if (isCarouselPaused || activeModalService) return;
@@ -114,22 +91,6 @@ export default function Services() {
             From a single court to a complete multi-sport facility, SPORTICON delivers integrated sports infrastructure solutions tailored to your requirements.
           </p>
 
-          {/* Category Filter Pills (Light Theme) */}
-          <div className="flex flex-wrap justify-center gap-2 mt-8">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`min-h-10 px-3 sm:px-4 py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-200 cursor-pointer ${
-                  selectedCategory === cat.id
-                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30 scale-105"
-                    : "bg-white text-slate-700 border border-slate-200 hover:bg-slate-100"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Animated horizontal service cards */}
@@ -169,7 +130,7 @@ export default function Services() {
           onTouchStart={() => setIsCarouselPaused(true)}
           onTouchEnd={() => setIsCarouselPaused(false)}
         >
-          {filteredServices.map((service, index) => (
+          {CORE_SERVICES.map((service, index) => (
             <motion.article
               key={service.id}
               initial={{ opacity: 0, x: 44, scale: 0.96 }}
@@ -180,7 +141,7 @@ export default function Services() {
               whileTap={{ scale: 0.98 }}
               className="group relative flex w-full basis-full shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white transition-colors duration-300 hover:border-emerald-500 hover:shadow-2xl sm:w-[calc(50%_-_0.75rem)] sm:basis-[calc(50%_-_0.75rem)] lg:w-[calc(33.333%_-_1rem)] lg:basis-[calc(33.333%_-_1rem)]"
               aria-roledescription="slide"
-              aria-label={`${service.number} of ${filteredServices.length}: ${service.title}`}
+              aria-label={`${service.number} of ${CORE_SERVICES.length}: ${service.title}`}
             >
               {/* Card Image Container with Hover Zoom */}
               <div className="relative h-48 w-full overflow-hidden bg-slate-100 sm:h-52">
@@ -267,17 +228,6 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Brochure Reference Banner (Light Theme) */}
-        <div className="mt-10 p-5 sm:mt-14 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6 shadow-sm">
-          <div className="space-y-1 text-center md:text-left">
-            <h4 className="text-base sm:text-lg font-bold text-slate-900">
-              Looking for a custom multi-sport combination court?
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-600">
-              We engineer hybrid spaces pairing Football + Box Cricket, or Basketball + Pickleball within a single enclosed perimeter.
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Service Detailed Modal (Light Theme) */}
