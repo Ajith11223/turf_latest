@@ -43,6 +43,18 @@ export default function BeyondCourts() {
     Wrench,
   };
 
+  const backgroundImages: Record<string, string> = {
+    "multi-sport": "/images/cards/football.jpg",
+    tracks: "/images/cards/tennis.jpg",
+    "play-areas": "/images/hero-turf.jpg",
+    "outdoor-fitness": "/images/cards/basketball.jpg",
+    "flooring-systems": "/images/cards/badminton.jpg",
+    "sports-lighting": "/images/site-after.jpg",
+    "fencing-netting": "/images/cards/cricket.jpg",
+    equipment: "/images/cards/volleyball.jpg",
+    renovation: "/images/site-before.jpg",
+  };
+
   const whatsappMessage = encodeURIComponent(
     "Hi SPORTICON Infra, I am interested in extended sports infrastructure (Lighting, Fencing, Play Areas, Tracks, Renovation)."
   );
@@ -130,9 +142,15 @@ export default function BeyondCourts() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.09 }}
-                    className="group flex flex-col justify-between rounded-2xl border border-slate-200/90 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-500 hover:shadow-xl"
+                    className="group relative isolate flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-900 p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-xl"
+                    style={{
+                      backgroundImage: `url('${backgroundImages[item.id]}')`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                    }}
                   >
-                    <div>
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-br from-slate-950/85 via-slate-950/65 to-emerald-950/55 transition-colors group-hover:from-slate-950/75 group-hover:via-slate-950/60 group-hover:to-emerald-950/45" />
+                    <div className="relative z-10">
                       <div className="flex items-center justify-between mb-4">
                         <div className="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                           <Icon className="w-6 h-6" />
@@ -142,24 +160,24 @@ export default function BeyondCourts() {
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition-colors mb-2">
+                      <h3 className="text-lg font-bold text-white group-hover:text-emerald-200 transition-colors mb-2">
                         {item.title}
                       </h3>
 
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
                         {item.description}
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                      <span className="text-[11px] font-mono text-emerald-700 font-bold">
+                    <div className="relative z-10 mt-6 pt-4 border-t border-white/25 flex items-center justify-between">
+                      <span className="text-[11px] font-mono text-emerald-200 font-bold">
                         Solution {String(itemNumber).padStart(2, "0")}
                       </span>
                       <a
                         href={whatsappUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-bold text-emerald-700 group-hover:text-emerald-900 flex items-center gap-1 transition-colors"
+                        className="text-xs font-bold text-white group-hover:text-emerald-200 flex items-center gap-1 transition-colors"
                       >
                         <span>Inquire</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
