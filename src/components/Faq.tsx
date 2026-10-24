@@ -6,11 +6,8 @@ import {
   FaqItem 
 } from "@/data/sportsData";
 import { 
-  Sparkles, 
   ChevronDown, 
-  HelpCircle, 
-  MessageSquare, 
-  Phone
+  HelpCircle
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
@@ -21,11 +18,6 @@ export default function Faq() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const whatsappMessage = encodeURIComponent(
-    "Hi SPORTICON Infra, I have a specific question regarding sports court construction on my plot."
-  );
-  const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
-
   return (
     <section id="faqs" className="relative py-20 lg:py-28 bg-[#f8fafc] overflow-hidden">
       {/* Background Lighting */}
@@ -35,11 +27,8 @@ export default function Faq() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="mb-3">
-            <JumpBadge icon={HelpCircle} text="COMMONLY ASKED QUESTIONS" />
+            <JumpBadge icon={HelpCircle} text="FREQUENTLY ASKED QUESTIONS" />
           </div>
-          <p className="text-xs sm:text-sm font-bold tracking-widest text-emerald-400 uppercase mb-2">
-            FREQUENTLY ASKED QUESTIONS
-          </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
             <JumpText
               text="Everything You Need to Know Before Building."
@@ -100,35 +89,6 @@ export default function Faq() {
           })}
         </div>
 
-        {/* Still have questions prompt */}
-        <div className="mt-12 p-6 rounded-2xl bg-white/90 border border-slate-200 text-center flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-left">
-            <h4 className="text-sm sm:text-base font-bold text-slate-900">
-              Still have questions about your specific plot or layout?
-            </h4>
-            <p className="text-xs text-slate-600">
-              Speak directly with our chief civil & sports infrastructure engineers today.
-            </p>
-          </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <a
-              href="tel:+919400088990"
-              className="px-4 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-600 border border-emerald-700/50 flex items-center gap-2"
-            >
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Call Us</span>
-            </a>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2.5 rounded-xl text-xs font-bold text-black bg-emerald-400 hover:bg-emerald-300 flex items-center gap-2"
-            >
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>Chat on WhatsApp</span>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

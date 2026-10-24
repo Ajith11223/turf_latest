@@ -197,6 +197,15 @@ body {
   animation: pulseGlow 4s ease-in-out infinite;
 }
 
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Light Glassmorphism helpers */
 .glass-panel-light {
   background: rgba(255, 255, 255, 0.88);

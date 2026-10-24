@@ -24,41 +24,25 @@ import JumpText, { JumpBadge } from "@/components/JumpText";
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [activeFilter, setActiveFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-
-  const filters = [
-    { id: "all", label: "All Projects (9)" },
-    { id: "football", label: "Football Turfs" },
-    { id: "academy", label: "Academies & Colleges" },
-    { id: "stadium", label: "Stadiums & Arenas" },
-  ];
-
-  const filteredProjects = MAJOR_PROJECTS.filter((proj) => {
-    if (activeFilter === "all") return true;
-    if (activeFilter === "football") return proj.category.toLowerCase().includes("football");
-    if (activeFilter === "academy") return proj.category.toLowerCase().includes("college") || proj.category.toLowerCase().includes("school") || proj.category.toLowerCase().includes("academy");
-    if (activeFilter === "stadium") return proj.category.toLowerCase().includes("stadium") || proj.category.toLowerCase().includes("arena") || proj.category.toLowerCase().includes("police");
-    return true;
-  });
 
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+      setCurrentIndex((prev) => (prev + 1) % MAJOR_PROJECTS.length);
     }, 4500);
     return () => clearInterval(interval);
-  }, [isAutoPlaying, filteredProjects.length]);
+  }, [isAutoPlaying]);
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? filteredProjects.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? MAJOR_PROJECTS.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % filteredProjects.length);
+    setCurrentIndex((prev) => (prev + 1) % MAJOR_PROJECTS.length);
   };
 
-  const currentProject = filteredProjects[currentIndex] || filteredProjects[0];
+  const currentProject = MAJOR_PROJECTS[currentIndex] || MAJOR_PROJECTS[0];
 
   const whatsappInquiryUrl = (projectTitle: string) => {
     const text = encodeURIComponent(
@@ -93,29 +77,10 @@ export default function ProjectsCarousel() {
             From educational institutions to sports academies and dedicated playing facilities, our project portfolio reflects our work across different sports infrastructure requirements.
           </p>
 
-          {/* Filter Pills (Light Theme) */}
-          <div className="flex flex-wrap justify-center gap-2 mt-8">
-            {filters.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => {
-                  setActiveFilter(filter.id);
-                  setCurrentIndex(0);
-                }}
-                className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                  activeFilter === filter.id
-                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/30"
-                    : "bg-slate-100 text-slate-700 border border-slate-200 hover:bg-slate-200"
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
         </div>
 
         {/* Animated Carousel Display (Light Card) */}
-        {filteredProjects.length > 0 && currentProject && (
+        {MAJOR_PROJECTS.length > 0 && currentProject && (
           <div className="relative rounded-3xl bg-white border border-slate-200 overflow-hidden shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
               {/* Carousel Image Side */}
@@ -151,7 +116,7 @@ export default function ProjectsCarousel() {
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
                     <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-                      Project 0{currentIndex + 1} / 0{filteredProjects.length}
+                      Project 0{currentIndex + 1} / 0{MAJOR_PROJECTS.length}
                     </span>
                     <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
                       <Calendar className="w-3.5 h-3.5 text-emerald-600" />
@@ -217,7 +182,7 @@ export default function ProjectsCarousel() {
 
                     {/* Progress Dots */}
                     <div className="flex items-center gap-1.5">
-                      {filteredProjects.map((_, dotIdx) => (
+                      {MAJOR_PROJECTS.map((_, dotIdx) => (
                         <button
                           key={dotIdx}
                           onClick={() => setCurrentIndex(dotIdx)}
@@ -249,7 +214,7 @@ export default function ProjectsCarousel() {
 
         {/* Thumbnail Quick Picker Strip (Light Theme) */}
         <div className="mt-8 grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2">
-          {filteredProjects.map((proj, idx) => (
+          {MAJOR_PROJECTS.map((proj, idx) => (
             <button
               key={proj.id}
               onClick={() => setCurrentIndex(idx)}

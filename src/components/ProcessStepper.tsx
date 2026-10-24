@@ -228,25 +228,36 @@ export default function ProcessStepper() {
           </div>
         </div>
 
-        {/* Handover Quality Guarantee Footer (Light Theme) */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 border border-emerald-200 shadow-sm">
-            <div className="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center font-black text-lg shrink-0">
-              100%
+        {/* Handover Quality Guarantee */}
+        <div className="mt-16">
+          <div className="relative isolate mx-auto flex max-w-5xl flex-col items-center gap-6 overflow-hidden rounded-3xl border border-emerald-700/50 bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-800 px-6 py-8 text-center shadow-2xl shadow-emerald-950/20 sm:flex-row sm:px-9 sm:py-9 sm:text-left">
+            <div className="pointer-events-none absolute -right-12 -top-24 -z-10 h-64 w-64 rounded-full bg-teal-300/20 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-32 left-1/4 -z-10 h-64 w-64 rounded-full bg-emerald-400/20 blur-3xl" />
+
+            <div className="flex h-24 w-24 shrink-0 flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white shadow-inner shadow-white/10 backdrop-blur-sm">
+              <span className="text-2xl font-black leading-none">100%</span>
+              <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-100">On time</span>
             </div>
-            <div className="text-center sm:text-left">
-              <h4 className="text-sm sm:text-base font-bold text-slate-900">
+
+            <div className="flex-1">
+              <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-emerald-100">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                Handover Guarantee
+              </div>
+              <h4 className="text-lg font-extrabold leading-snug text-white sm:text-xl">
                 Guaranteed On-Time Project Handover with Zero Compromise
               </h4>
-              <p className="text-xs text-slate-600">
+              <p className="mt-2 max-w-2xl text-xs leading-relaxed text-emerald-50/80 sm:text-sm">
                 Weekly progress videos, live site milestones, and strict adherence to structural civil standards.
               </p>
             </div>
+
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors shrink-0 shadow-md shadow-emerald-600/20"
+              className="group relative isolate inline-flex shrink-0 items-center justify-center gap-2 overflow-hidden rounded-xl border border-white/30 bg-gradient-to-r from-lime-300 via-emerald-300 to-teal-300 bg-[length:200%_200%] px-5 py-3 text-xs font-extrabold text-emerald-950 shadow-lg shadow-emerald-950/25 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:bg-right-bottom hover:shadow-xl hover:shadow-emerald-950/35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white motion-safe:animate-[gradient-shift_4s_ease_infinite]"
             >
-              Start Consultation
+              <span className="relative z-10">Start Consultation</span>
+              <ChevronRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
           </div>
         </div>
