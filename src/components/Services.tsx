@@ -133,7 +133,7 @@ export default function Services() {
           {CORE_SERVICES.map((service, index) => (
             <motion.article
               key={service.id}
-              initial={{ opacity: 0, x: 44, scale: 0.96 }}
+              initial={false}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ type: "spring", stiffness: 120, damping: 18, delay: index * 0.06 }}
@@ -147,7 +147,7 @@ export default function Services() {
               <div className="relative h-48 w-full overflow-hidden bg-slate-100 sm:h-52">
                 <motion.div
                   className="absolute inset-0"
-                  initial={{ scale: 1.12, opacity: 0.65, filter: "blur(8px)" }}
+                  initial={false}
                   whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}

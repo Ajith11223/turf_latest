@@ -119,12 +119,12 @@ export default function BeyondCourts() {
             </span>
           </div>
 
-          <AnimatePresence mode="wait" custom={direction}>
+          <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.div
               key={currentPage}
               custom={direction}
               variants={pageVariants}
-              initial="enter"
+              initial={false}
               animate="center"
               exit="exit"
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -138,7 +138,7 @@ export default function BeyondCourts() {
                 return (
                   <motion.article
                     key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={false}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.09 }}
                     className="group relative isolate flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-900 p-6 text-white transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:shadow-xl"

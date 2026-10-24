@@ -71,7 +71,7 @@ export default function JumpText({
 
   return (
     <motion.span
-      initial="hidden"
+      initial={false}
       whileInView="visible"
       viewport={{ once, amount: 0.2 }}
       variants={containerVariants}
@@ -119,7 +119,7 @@ export function JumpBadge({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20, scale: 0.8 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: false, amount: 0.3 }}
       transition={{
