@@ -7,6 +7,10 @@ type ProjectPageProps = {
   params: Promise<{ id: string }>;
 };
 
+export function generateStaticParams() {
+  return MAJOR_PROJECTS.map(({ id }) => ({ id }));
+}
+
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params;
   const project = MAJOR_PROJECTS.find((item) => item.id === id);
