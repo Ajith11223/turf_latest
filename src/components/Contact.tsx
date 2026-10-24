@@ -7,13 +7,9 @@ import {
   Phone, 
   Mail, 
   MapPin, 
-  Clock, 
   Send, 
   MessageSquare, 
-  CheckCircle2, 
-  ShieldCheck,
-  Building2,
-  Globe
+  CheckCircle2
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
@@ -21,12 +17,8 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    email: "",
     location: "",
     sportType: "Football Turf",
-    landSize: "",
-    projectStage: "Planning & Feasibility",
-    notes: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
@@ -55,10 +47,7 @@ export default function Contact() {
       `\n• Name: ${formData.name || "Client"}` +
       `\n• Phone: ${formData.phone || "Not specified"}` +
       `\n• Location: ${formData.location || "Pan-India"}` +
-      `\n• Sport: ${formData.sportType}` +
-      `\n• Land Size: ${formData.landSize || "TBD"}` +
-      `\n• Stage: ${formData.projectStage}` +
-      `\n• Notes: ${formData.notes || "None"}`
+      `\n• Sport: ${formData.sportType}`
     );
     window.open(`https://wa.me/919400088990?text=${text}`, "_blank");
   };
@@ -92,10 +81,10 @@ export default function Contact() {
         </div>
 
         {/* Contact Layout: Info Column + Interactive Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Info Card Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-xl space-y-6">
+          <div className="h-full lg:col-span-5 space-y-6">
+            <div className="h-full p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-xl space-y-6">
               <div>
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   SPORTICON Infra Private Limited
@@ -148,40 +137,14 @@ export default function Contact() {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0">
-                    <Globe className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-slate-500">Website & Reach:</div>
-                    <div className="text-sm font-bold text-slate-900">www.sporticon.in • Pan-India Coverage</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="p-2 rounded-lg bg-emerald-50 text-emerald-700 shrink-0">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-slate-500">Emergency Maintenance Support:</div>
-                    <div className="text-sm font-bold text-emerald-400">24/7 On-Call Technical Assistance</div>
-                  </div>
-                </div>
               </div>
 
-              {/* Quality Seal */}
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center gap-3">
-                <ShieldCheck className="w-8 h-8 text-emerald-400 shrink-0" />
-                <div className="text-xs text-slate-700">
-                  <strong className="text-slate-900">Direct Engineering Support:</strong> Your project will be reviewed by qualified civil engineers and sports surface specialists.
-                </div>
-              </div>
             </div>
           </div>
 
           {/* Inquiry Form Column */}
-          <div className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl relative">
+          <div className="h-full lg:col-span-7">
+            <div className="h-full p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-2xl relative">
               {submitted ? (
                 <div className="py-12 text-center space-y-4 animate-fadeIn">
                   <div className="w-16 h-16 rounded-full bg-emerald-400 text-black flex items-center justify-center mx-auto shadow-xl shadow-emerald-400/40">
@@ -240,19 +203,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-bold text-slate-700 mb-1.5 block">
-                        Email Address (Optional)
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="yourname@gmail.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-emerald-500 focus:outline-none text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm"
-                      />
-                    </div>
+                  <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="text-xs font-bold text-slate-700 mb-1.5 block">
                         Project Location / City *
@@ -268,7 +219,7 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4">
                     <div>
                       <label className="text-xs font-bold text-slate-700 mb-1.5 block">
                         Sport Facility Required *
@@ -290,53 +241,6 @@ export default function Contact() {
                       </select>
                     </div>
 
-                    <div>
-                      <label className="text-xs font-bold text-slate-700 mb-1.5 block">
-                        Approximate Land Size / Dimensions
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. 10,000 sq ft or 100 x 60 ft"
-                        value={formData.landSize}
-                        onChange={(e) => setFormData({ ...formData, landSize: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-emerald-500 focus:outline-none text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-slate-700 mb-1.5 block">
-                      Project Stage
-                    </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {["Planning / Budgeting", "Land Ready", "Urgent Execution"].map((stage) => (
-                        <button
-                          type="button"
-                          key={stage}
-                          onClick={() => setFormData({ ...formData, projectStage: stage })}
-                          className={`py-2 px-2 rounded-lg text-xs font-semibold border transition-all text-center ${
-                            formData.projectStage === stage
-                              ? "bg-emerald-50 border-emerald-500 text-emerald-800"
-                              : "bg-white border-slate-200 text-slate-600 hover:text-slate-900"
-                          }`}
-                        >
-                          {stage}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-bold text-slate-700 mb-1.5 block">
-                      Additional Requirements / Notes
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Tell us about special requirements (floodlights, fencing height, spectator stands, civil gradient, etc.)..."
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white border border-slate-300 focus:border-emerald-500 focus:outline-none text-slate-900 placeholder:text-slate-400 text-xs sm:text-sm resize-none"
-                    />
                   </div>
 
                   {/* Submission Buttons */}
