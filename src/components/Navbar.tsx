@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { 
   Menu, 
   X, 
@@ -11,28 +12,39 @@ import {
   ArrowRight
 } from "lucide-react";
 
-interface NavProps {
-  activeSection?: string;
-}
-
-export default function Navbar({ activeSection = "home" }: NavProps) {
+export default function Navbar() {
+  const pathname = usePathname();
+  const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      if (pathname !== "/") return;
+
+      const sections = ["home", "about", "services", "infrastructure", "process", "why-us", "projects", "faqs", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const navLinks = [
-    { name: "Home", href: "#home", id: "home" },
-    { name: "About", href: "#about", id: "about" },
-    { name: "Service", href: "#services", id: "services" },
-    { name: "Contact", href: "#contact", id: "contact" },
-    { name: "Projects", href: "#projects", id: "projects" },
+    { name: "Home", href: "/", id: "home" },
+    { name: "About", href: "/about", id: "about" },
+    { name: "Service", href: "/services", id: "services" },
+    { name: "Contact", href: "/contact", id: "contact" },
+    { name: "Projects", href: "/projects", id: "projects" },
   ];
 
   const whatsappMessage = encodeURIComponent(
@@ -48,7 +60,7 @@ export default function Navbar({ activeSection = "home" }: NavProps) {
       >
         <div className={`max-w-7xl mx-auto min-h-[72px] px-4 sm:px-6 flex items-center justify-between gap-4 rounded-[1.4rem] border border-white/40 backdrop-blur-xl transition-all duration-300 ${scrolled ? "bg-white/55 shadow-[0_12px_36px_rgba(15,23,42,0.16)]" : "bg-white/30 shadow-[0_8px_28px_rgba(15,23,42,0.11)]"}`}>
           {/* Logo */}
-          <Link href="#home" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group">
             <div className="relative h-14 w-28 overflow-hidden rounded-xl border border-white/70 bg-white/90 shadow-sm backdrop-blur-sm sm:w-32">
               <Image
                 src="/images/sporticon-logo.png"
@@ -63,7 +75,9 @@ export default function Navbar({ activeSection = "home" }: NavProps) {
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
+              const isActive = pathname === "/"
+                ? activeSection === link.id
+                : pathname === link.href || (link.id === "projects" && pathname.startsWith("/projects/"));
               return (
                 <Link
                   key={link.id}
@@ -123,7 +137,7 @@ export default function Navbar({ activeSection = "home" }: NavProps) {
         <div className="lg:hidden fixed inset-x-3 top-[88px] z-40 rounded-2xl border border-white/70 bg-white/90 backdrop-blur-xl p-4 shadow-2xl animate-fadeIn">
           <div className="space-y-1.5">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.id}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
@@ -131,7 +145,7 @@ export default function Navbar({ activeSection = "home" }: NavProps) {
               >
                 <span>{link.name}</span>
                 <ChevronRight className="w-4 h-4 text-emerald-600" />
-              </a>
+              </Link>
             ))}
           </div>
 

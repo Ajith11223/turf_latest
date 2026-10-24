@@ -20,7 +20,10 @@ export interface ProjectItem {
   year: string;
   highlight: string;
   image: string;
+  videoUrl?: string;
+  deliverables: string[];
 }
+
 
 export interface ProcessStep {
   number: number;
@@ -311,7 +314,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "32,000 sq ft",
     year: "Completed",
     highlight: "FIFA standard artificial football turf with sub-surface herringbone drainage and 400W stadium LED array.",
-    image: "/images/hero.jpeg"
+    image: "/images/hero.jpeg",
+    deliverables: ["FIFA standard artificial football turf", "Sub-surface herringbone drainage", "400W stadium LED lighting"]
   },
   {
     id: "p2",
@@ -321,7 +325,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "18,500 sq ft",
     year: "Completed",
     highlight: "Dual-purpose synthetic turf football arena and FIBA standard multi-layer acrylic basketball court.",
-    image: "/images/cards/football.jpg"
+    image: "/images/cards/football.jpg",
+    deliverables: ["Synthetic turf football arena", "FIBA standard multi-layer acrylic basketball court", "Dual-purpose campus sports facility"]
   },
   {
     id: "p3",
@@ -331,7 +336,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "45,000 sq ft",
     year: "Completed",
     highlight: "High-endurance football turf and athletic physical training zone built for rigorous institutional usage.",
-    image: "/images/about-turf.jpg"
+    image: "/images/about-turf.jpg",
+    deliverables: ["High-endurance football turf", "Athletic physical training zone", "Designed for rigorous institutional use"]
   },
   {
     id: "p4",
@@ -341,7 +347,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "24,000 sq ft",
     year: "Completed",
     highlight: "Multi-sport arena with 50mm monofilament turf, heavy-gauge perimeter safety cages and night illumination.",
-    image: "/images/cards/football.jpg"
+    image: "/images/cards/football.jpg",
+    deliverables: ["50mm monofilament turf", "Heavy-gauge perimeter safety cages", "Night illumination"]
   },
   {
     id: "p5",
@@ -351,7 +358,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "65,000 sq ft",
     year: "Completed",
     highlight: "Full-scale stadium turf installation in high-rainfall hill terrain featuring specialized gravel filtration civil works.",
-    image: "/images/cards/football.jpg"
+    image: "/images/cards/football.jpg",
+    deliverables: ["Full-scale stadium turf installation", "Specialized gravel filtration civil works", "Designed for high-rainfall hill terrain"]
   },
   {
     id: "p6",
@@ -361,7 +369,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "28,000 sq ft",
     year: "Completed",
     highlight: "Professional training grounds with shock-pad underlay designed for youth athletic development and agility drills.",
-    image: "/images/hero.jpeg"
+    image: "/images/hero.jpeg",
+    deliverables: ["Professional football training grounds", "Shock-pad underlay", "Youth athletic development and agility training"]
   },
   {
     id: "p7",
@@ -371,7 +380,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "20,000 sq ft",
     year: "Completed",
     highlight: "High-earning commercial sports complex with twin 7-a-side football turfs and rooftop box cricket arena.",
-    image: "/images/cards/football.jpg"
+    image: "/images/cards/football.jpg",
+    deliverables: ["Twin 7-a-side football turfs", "Rooftop box cricket arena", "Commercial multi-sport complex"]
   },
   {
     id: "p8",
@@ -381,7 +391,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "22,000 sq ft",
     year: "Completed",
     highlight: "Twin pickleball tournament courts coupled with a 6-a-side artificial football turf arena and cafe pavilion.",
-    image: "/images/cards/pickleball.jpg"
+    image: "/images/cards/pickleball.jpg",
+    deliverables: ["Twin pickleball tournament courts", "6-a-side artificial football turf arena", "Cafe pavilion"]
   },
   {
     id: "p9",
@@ -391,7 +402,8 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "19,500 sq ft",
     year: "Completed",
     highlight: "Premium monofilament turf with 30ft perimeter netting, dugouts, locker rooms, and automated water-cooling system.",
-    image: "/images/cards/football.jpg"
+    image: "/images/cards/football.jpg",
+    deliverables: ["Premium monofilament turf", "30ft perimeter netting", "Dugouts and locker rooms", "Automated water-cooling system"]
   }
 ];
 

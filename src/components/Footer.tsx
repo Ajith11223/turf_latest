@@ -9,6 +9,42 @@ import {
   ChevronDown
 } from "lucide-react";
 
+function ResponsiveFooterDetails({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1024px)");
+    const syncDefault = () => setIsOpen(desktopQuery.matches);
+
+    syncDefault();
+    desktopQuery.addEventListener("change", syncDefault);
+    return () => desktopQuery.removeEventListener("change", syncDefault);
+  }, []);
+
+  return (
+    <details
+      className="group"
+      open={isOpen}
+      onToggle={(event) => {
+        const nextOpen = event.currentTarget.open;
+        if (nextOpen !== isOpen) setIsOpen(nextOpen);
+      }}
+    >
+      <summary className="mb-4 flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold uppercase tracking-wider text-slate-900 [&::-webkit-details-marker]:hidden">
+        {title}
+        <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
+      </summary>
+      {children}
+    </details>
+  );
+}
+
 export default function Footer() {
   const services = [
     "Artificial Football Turf",
@@ -64,45 +100,33 @@ export default function Footer() {
           </div>
 
           {/* Core Services Col */}
-          <details className="group">
-            <summary className="mb-4 flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold uppercase tracking-wider text-slate-900 [&::-webkit-details-marker]:hidden">
-              Core Sports Services
-              <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
-            </summary>
+          <ResponsiveFooterDetails title="Core Sports Services">
             <ul className="space-y-2.5 text-xs text-slate-600">
               {services.map((item, i) => (
                 <li key={i} className="rounded-lg border border-emerald-800 bg-gradient-to-r from-emerald-800 via-green-800 to-teal-800 shadow-sm shadow-emerald-950/20 transition-all hover:border-emerald-950 hover:from-emerald-900 hover:via-green-900 hover:to-teal-900 px-3 py-2">
-                  <a href="#services" className="block font-semibold text-white hover:text-white/80 transition-colors">
+                  <a href="/services#services" className="block font-semibold text-white hover:text-white/80 transition-colors">
                     {item}
                   </a>
                 </li>
               ))}
             </ul>
-          </details>
+          </ResponsiveFooterDetails>
 
           {/* Extended Infrastructure */}
-          <details className="group">
-            <summary className="mb-4 flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold uppercase tracking-wider text-slate-900 [&::-webkit-details-marker]:hidden">
-              Extended Solutions
-              <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
-            </summary>
+          <ResponsiveFooterDetails title="Extended Solutions">
             <ul className="space-y-2.5 text-xs text-slate-600">
               {extended.map((item, i) => (
                 <li key={i} className="rounded-lg border border-emerald-800 bg-gradient-to-r from-emerald-800 via-green-800 to-teal-800 shadow-sm shadow-emerald-950/20 transition-all hover:border-emerald-950 hover:from-emerald-900 hover:via-green-900 hover:to-teal-900 px-3 py-2">
-                  <a href="#infrastructure" className="block font-semibold text-white hover:text-white/80 transition-colors">
+                  <a href="/services#infrastructure" className="block font-semibold text-white hover:text-white/80 transition-colors">
                     {item}
                   </a>
                 </li>
               ))}
             </ul>
-          </details>
+          </ResponsiveFooterDetails>
 
           {/* Quick Contact & Presence */}
-          <details className="group">
-            <summary className="mb-4 flex cursor-pointer list-none items-center justify-between gap-3 text-xs font-bold uppercase tracking-wider text-slate-900 [&::-webkit-details-marker]:hidden">
-              Pan-India Presence
-              <ChevronDown className="h-4 w-4 shrink-0 transition-transform group-open:rotate-180" />
-            </summary>
+          <ResponsiveFooterDetails title="Pan-India Presence">
             <div className="space-y-3 text-xs text-slate-600">
               <div className="flex items-center gap-2 rounded-lg border border-emerald-800 bg-gradient-to-r from-emerald-800 via-green-800 to-teal-800 shadow-sm shadow-emerald-950/20 transition-all hover:border-emerald-950 hover:from-emerald-900 hover:via-green-900 hover:to-teal-900 px-3 py-2">
                 <Phone className="w-4 h-4 text-white shrink-0" />
@@ -123,7 +147,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-          </details>
+          </ResponsiveFooterDetails>
         </div>
 
         {/* Bottom Legal Copyright */}
@@ -132,10 +156,10 @@ export default function Footer() {
             © 2026 SPORTICON Infra Private Limited. All Rights Reserved.
           </div>
           <div className="flex items-center gap-4 text-slate-600">
-            <a href="#about" className="hover:text-emerald-300">About</a>
-            <a href="#services" className="hover:text-emerald-300">Services</a>
-            <a href="#faqs" className="hover:text-emerald-300">FAQs</a>
-            <a href="#contact" className="hover:text-emerald-300">Contact</a>
+            <Link href="/about" className="hover:text-emerald-300">About</Link>
+            <Link href="/services" className="hover:text-emerald-300">Services</Link>
+            <Link href="/#faqs" className="hover:text-emerald-300">FAQs</Link>
+            <Link href="/contact" className="hover:text-emerald-300">Contact</Link>
           </div>
         </div>
       </div>

@@ -2,17 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { 
-  MAJOR_PROJECTS, 
-  ProjectItem 
-} from "@/data/sportsData";
+import Link from "next/link";
+import { MAJOR_PROJECTS } from "@/data/sportsData";
 import { 
   Sparkles, 
   MapPin, 
   ChevronLeft, 
   ChevronRight, 
   Maximize2, 
-  X, 
   Layers, 
   Calendar, 
   Play, 
@@ -24,7 +21,6 @@ import JumpText, { JumpBadge } from "@/components/JumpText";
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -96,14 +92,14 @@ export default function ProjectsCarousel() {
                 />
 
                 {/* Quick inspect button */}
-                <button
-                  onClick={() => setSelectedProject(currentProject)}
+                <Link
+                  href={`/projects/${currentProject.id}`}
                   className="absolute bottom-4 right-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200 text-slate-800 hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer"
-                  aria-label="Inspect project details"
+                  aria-label={`View ${currentProject.title} project details`}
                 >
                   <Maximize2 className="w-4 h-4" />
-                  <span>Inspect Details</span>
-                </button>
+                  <span>View Full Project</span>
+                </Link>
 
                 {/* Handover Badge */}
                 <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
@@ -238,68 +234,6 @@ export default function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* Project Detail Modal (Light Theme) */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl rounded-2xl bg-white border-2 border-emerald-400 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
-            <button
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-slate-100 text-slate-600 hover:text-slate-900 cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="relative h-64 w-full rounded-xl overflow-hidden mb-6 bg-slate-100">
-              <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                fill
-                quality={95}
-                sizes="(max-width: 768px) calc(100vw - 32px), 672px"
-                className="object-cover"
-              />
-            </div>
-
-            <div className="flex items-center gap-2 text-xs font-mono text-emerald-700 font-bold mb-1">
-              <MapPin className="w-4 h-4" />
-              <span>{selectedProject.location}</span>
-            </div>
-
-            <h3 className="text-2xl font-black text-slate-950 mb-2">
-              {selectedProject.title}
-            </h3>
-
-            <p className="text-sm font-bold text-emerald-700 mb-4">
-              {selectedProject.category}
-            </p>
-
-            <p className="text-sm text-slate-600 leading-relaxed mb-6">
-              {selectedProject.highlight}
-            </p>
-
-            <div className="grid grid-cols-2 gap-3 mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs">
-              <div>
-                <span className="text-slate-500 block">Developed Footprint:</span>
-                <span className="text-slate-900 font-bold text-sm">{selectedProject.area}</span>
-              </div>
-              <div>
-                <span className="text-slate-500 block">Execution Status:</span>
-                <span className="text-emerald-700 font-bold text-sm">Successfully Handed Over</span>
-              </div>
-            </div>
-
-            <a
-              href={whatsappInquiryUrl(selectedProject.title)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3 rounded-xl text-center text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>Connect with Our Project Engineer</span>
-            </a>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
