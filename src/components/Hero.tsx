@@ -164,7 +164,7 @@ export default function Hero() {
               <span className="text-emerald-300">•</span>
               <span className="flex items-center gap-2.5 text-slate-800">
                 <Trophy className="w-3.5 h-3.5 text-amber-500" />
-                FIFA & FIBA CERTIFIED TURF
+                FIFA CERTIFIED TURF
               </span>
               <span className="text-emerald-300">•</span>
               <span className="flex items-center gap-2.5 text-emerald-700">
