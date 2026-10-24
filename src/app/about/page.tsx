@@ -1,13 +1,11 @@
 import About from "@/components/About";
-import StatsSection from "@/components/StatsSection";
-import WhyUs from "@/components/WhyUs";
+import FounderSection from "@/components/FounderSection";
 
 export default function AboutPage() {
   return (
     <main>
-      <StatsSection />
       <About />
-      <WhyUs />
+      <FounderSection />
     </main>
   );
 }

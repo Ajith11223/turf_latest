@@ -334,6 +334,16 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .site-dark-theme .project-case-page *, .site-dark-theme .project-case-page *::before, .site-dark-theme .project-case-page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+@keyframes founder-avatar-enter {
+  from { opacity: .65; transform: translateY(14px) scale(.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.founder-avatar { animation: founder-avatar-enter .75s cubic-bezier(.22, 1, .36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .founder-avatar { animation: none; }
+}
+
 /* Shared home-page forest gradient and grid for project story sections. */
 .site-dark-theme main.project-case-page {
   background: linear-gradient(135deg, #00451a 0%, #00250d 48%, #000000 100%) !important;
