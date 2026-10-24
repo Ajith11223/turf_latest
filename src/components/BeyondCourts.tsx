@@ -16,7 +16,6 @@ import {
   Shield, 
   Award, 
   Wrench,
-  CheckCircle2,
   ArrowRight,
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
@@ -190,30 +189,6 @@ export default function BeyondCourts() {
           </AnimatePresence>
         </div>
 
-        {/* Technical Guarantee Strip (Light Theme) */}
-        <div className="mt-12 p-6 rounded-2xl bg-white border border-emerald-200 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center sm:text-left shadow-sm">
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
-            <div>
-              <div className="text-xs sm:text-sm font-bold text-slate-900">Full Turnkey Civil Integration</div>
-              <div className="text-[11px] text-slate-500">Earth excavation, retaining walls, floodlight electricals</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
-            <div>
-              <div className="text-xs sm:text-sm font-bold text-slate-900">Certified Material Standards</div>
-              <div className="text-[11px] text-slate-500">FIFA Labosport & FIBA tested synthetic surfaces</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mx-auto sm:mx-0" />
-            <div>
-              <div className="text-xs sm:text-sm font-bold text-slate-900">24-Hour Maintenance Cell</div>
-              <div className="text-[11px] text-slate-500">Rapid callout for storm damage, net tears, light faults</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
