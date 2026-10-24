@@ -64,7 +64,7 @@ export default function ProcessStepper() {
   };
 
   return (
-    <section id="process" className="relative py-20 lg:py-32 bg-[#f8fafc] overflow-hidden">
+    <section id="process" className="relative hidden py-20 lg:py-32 bg-[#f8fafc] overflow-hidden md:block">
       {/* Light background grid */}
       <div className="absolute inset-0 turf-grid-pattern-light opacity-50 pointer-events-none" />
       <div className="absolute top-1/2 left-0 w-80 h-80 bg-emerald-100/50 blur-[120px] rounded-full pointer-events-none" />
