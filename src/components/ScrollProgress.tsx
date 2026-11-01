@@ -61,7 +61,7 @@ export default function ScrollProgress() {
   const whatsappMessage = encodeURIComponent(
     "Hi SPORTICON Infra, I am visiting your landing page and would like to speak with a project consultant."
   );
-  const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/918137008308?text=${whatsappMessage}`;
 
   const activeIndex = SECTIONS.findIndex((s) => s.id === activeSection);
 

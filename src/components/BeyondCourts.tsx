@@ -57,7 +57,7 @@ export default function BeyondCourts() {
   const whatsappMessage = encodeURIComponent(
     "Hi SPORTICON Infra, I am interested in extended sports infrastructure (Lighting, Fencing, Play Areas, Tracks, Renovation)."
   );
-  const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/918137008308?text=${whatsappMessage}`;
 
   const showNextPage = useCallback(() => {
     setDirection(1);

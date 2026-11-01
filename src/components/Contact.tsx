@@ -49,7 +49,7 @@ export default function Contact() {
       `\n• Location: ${formData.location || "Pan-India"}` +
       `\n• Sport: ${formData.sportType}`
     );
-    window.open(`https://wa.me/919400088990?text=${text}`, "_blank");
+    window.open(`https://wa.me/918137008308?text=${text}`, "_blank");
   };
 
   return (
@@ -110,7 +110,7 @@ export default function Contact() {
                 </a>
 
                 <a 
-                  href="https://wa.me/919400088990" 
+                  href="https://wa.me/918137008308" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-start gap-3.5 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:border-emerald-400 transition-colors group"
@@ -120,7 +120,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <div className="text-[11px] text-slate-500">WhatsApp Instant Support:</div>
-                    <div className="text-sm font-bold text-emerald-300">+91 94000 88990 (Available 24/7)</div>
+                    <div className="text-sm font-bold text-emerald-300">+91 81370 08308 (Available 24/7)</div>
                   </div>
                 </a>
 

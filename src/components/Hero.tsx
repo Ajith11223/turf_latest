@@ -20,7 +20,7 @@ export default function Hero() {
   const whatsappMessage = encodeURIComponent(
     "Hi SPORTICON Infra, I saw your sports facility portfolio. I would like a free quotation for a new turf / court project."
   );
-  const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/918137008308?text=${whatsappMessage}`;
 
   return (
     <section 

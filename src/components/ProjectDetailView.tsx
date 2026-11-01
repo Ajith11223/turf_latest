@@ -40,7 +40,7 @@ export default function ProjectDetailView({ project }: { project: ProjectItem })
             <p className="case-hero-intro">A sports facility designed around its site, players and the way the community wants to play.</p>
             <div className="case-actions">
               <a className="case-button case-button-accent" href="#project-overview">Explore this project <ArrowDown size={17} /></a>
-              <a className="case-button case-button-glass" href={`https://wa.me/919400088990?text=${message}`} target="_blank" rel="noopener noreferrer"><MessageSquare size={17} /> Discuss a similar project</a>
+              <a className="case-button case-button-glass" href={`https://wa.me/918137008308?text=${message}`} target="_blank" rel="noopener noreferrer"><MessageSquare size={17} /> Discuss a similar project</a>
             </div>
           </motion.div>
           <motion.div initial={false} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.2 }} className="case-proof-row">
@@ -62,7 +62,7 @@ export default function ProjectDetailView({ project }: { project: ProjectItem })
             <div className="case-scope-head"><span>PROJECT DELIVERY</span><span className="case-scope-mark"><CheckCircle2 size={20} /></span></div>
             <h3>What went into this project</h3>
             <ul>{project.deliverables.map((item) => <li key={item}><CheckCircle2 size={18} />{item}</li>)}</ul>
-            <a href={`https://wa.me/919400088990?text=${message}`} target="_blank" rel="noopener noreferrer" className="case-inline-link">Plan a facility like this <ArrowRight size={17} /></a>
+            <a href={`https://wa.me/918137008308?text=${message}`} target="_blank" rel="noopener noreferrer" className="case-inline-link">Plan a facility like this <ArrowRight size={17} /></a>
           </motion.div>
         </div>
       </section>

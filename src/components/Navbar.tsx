@@ -50,7 +50,7 @@ export default function Navbar() {
   const whatsappMessage = encodeURIComponent(
     "Hi SPORTICON Infra, I would like to get a free quote for sports court / turf construction."
   );
-  const whatsappUrl = `https://wa.me/919400088990?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/918137008308?text=${whatsappMessage}`;
 
   return (
     <>

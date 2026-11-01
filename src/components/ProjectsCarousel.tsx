@@ -63,7 +63,7 @@ export default function ProjectsCarousel() {
     const text = encodeURIComponent(
       `Hi SPORTICON Infra, I saw your project "${projectTitle}". I would like a similar sports court construction.`
     );
-    return `https://wa.me/919400088990?text=${text}`;
+    return `https://wa.me/918137008308?text=${text}`;
   };
 
   return (

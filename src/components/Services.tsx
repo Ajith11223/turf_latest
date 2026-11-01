@@ -29,7 +29,7 @@ export default function Services() {
     const text = encodeURIComponent(
       `Hi SPORTICON Infra, I would like to get specifications and pricing for: ${serviceTitle}.`
     );
-    return `https://wa.me/919400088990?text=${text}`;
+    return `https://wa.me/918137008308?text=${text}`;
   };
 
   const moveCarousel = useCallback((direction: 1 | -1) => {
