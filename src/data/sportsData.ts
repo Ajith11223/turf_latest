@@ -336,7 +336,7 @@ export const MAJOR_PROJECTS: ProjectItem[] = [
     area: "45,000 sq ft",
     year: "Completed",
     highlight: "High-endurance football turf and athletic physical training zone built for rigorous institutional usage.",
-    image: "/images/about-turf.jpg",
+    image: "/images/cards/football.jpg",
     deliverables: ["High-endurance football turf", "Athletic physical training zone", "Designed for rigorous institutional use"]
   },
   {
