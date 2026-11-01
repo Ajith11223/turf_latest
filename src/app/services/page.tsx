@@ -3,7 +3,7 @@ import BeyondCourts from "@/components/BeyondCourts";
 
 export default function ServicesPage() {
   return (
-    <main>
+    <main className="pt-16 sm:pt-0">
       <Services />
       <BeyondCourts />
     </main>
