@@ -18,9 +18,18 @@ import {
 } from "lucide-react";
 import JumpText, { JumpBadge } from "@/components/JumpText";
 
+const SAMPLE_GALLERY_IMAGES = [
+  "/images/cards/football.jpg",
+  "/images/hero.jpeg",
+  "/images/site-after.jpg",
+  "/images/cards/basketball.jpg",
+  "/images/cards/tennis.jpg",
+];
+
 export default function ProjectsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(MAJOR_PROJECTS[0]?.image ?? "");
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -39,6 +48,16 @@ export default function ProjectsCarousel() {
   };
 
   const currentProject = MAJOR_PROJECTS[currentIndex] || MAJOR_PROJECTS[0];
+  const galleryImages = currentProject.galleryImages?.length
+    ? currentProject.galleryImages.slice(0, 5)
+    : [
+        currentProject.image,
+        ...SAMPLE_GALLERY_IMAGES.filter((image) => image !== currentProject.image).slice(0, 4),
+      ];
+
+  useEffect(() => {
+    setSelectedImage(currentProject.image);
+  }, [currentProject.id, currentProject.image]);
 
   const whatsappInquiryUrl = (projectTitle: string) => {
     const text = encodeURIComponent(
@@ -82,8 +101,8 @@ export default function ProjectsCarousel() {
               {/* Carousel Image Side */}
               <div className="lg:col-span-7 relative h-72 sm:h-96 lg:h-auto min-h-[300px] overflow-hidden bg-slate-100">
                 <Image
-                  src={currentProject.image}
-                  alt={currentProject.title}
+                  src={selectedImage || currentProject.image}
+                  alt={`${currentProject.title} facility photo`}
                   fill
                   priority
                   quality={95}
@@ -94,7 +113,7 @@ export default function ProjectsCarousel() {
                 {/* Quick inspect button */}
                 <Link
                   href={`/projects/${currentProject.id}`}
-                  className="absolute bottom-4 right-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200 text-slate-800 hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer"
+                  className="absolute bottom-16 right-4 p-2.5 rounded-xl bg-white/90 backdrop-blur-md border border-slate-200 text-slate-800 hover:bg-emerald-600 hover:text-white transition-all flex items-center gap-1.5 text-xs font-bold shadow-md cursor-pointer sm:bottom-4"
                   aria-label={`View ${currentProject.title} project details`}
                 >
                   <Maximize2 className="w-4 h-4" />
@@ -105,6 +124,26 @@ export default function ProjectsCarousel() {
                 <div className="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-full shadow-md">
                   Page 12 Official Showcase
                 </div>
+
+                {galleryImages.length > 1 && (
+                  <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-1.5 rounded-xl border border-white/40 bg-slate-950/45 p-1.5 shadow-lg backdrop-blur-sm sm:gap-2 sm:p-2" aria-label={`${currentProject.title} photo gallery`}>
+                    {galleryImages.slice(0, 5).map((image, imageIndex) => (
+                      <button
+                        key={image}
+                        type="button"
+                        onClick={() => {
+                          setSelectedImage(image);
+                          setIsAutoPlaying(false);
+                        }}
+                        className={`relative h-9 w-10 overflow-hidden rounded-md border-2 transition sm:h-11 sm:w-14 ${selectedImage === image ? "border-emerald-300 ring-2 ring-emerald-500/50" : "border-white/70 opacity-80 hover:opacity-100"}`}
+                        aria-label={`Show project photo ${imageIndex + 1}`}
+                        aria-pressed={selectedImage === image}
+                      >
+                        <Image src={image} alt="" fill sizes="56px" className="object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* Carousel Details Side */}

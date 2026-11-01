@@ -20,6 +20,7 @@ export interface ProjectItem {
   year: string;
   highlight: string;
   image: string;
+  galleryImages?: string[];
   videoUrl?: string;
   deliverables: string[];
 }
