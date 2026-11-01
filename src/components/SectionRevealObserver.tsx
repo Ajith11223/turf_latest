@@ -31,7 +31,12 @@ export default function SectionRevealObserver() {
       observer.observe(section);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      sections.forEach((section) => {
+        section.classList.remove("section-reveal", "section-reveal-visible");
+      });
+    };
   }, []);
 
   return null;
